@@ -1,0 +1,156 @@
+API restfull:
+	serviço com padronização(REST)
+	Forma estruturada de retornar dados do back-end para o front-end e mobile.
+
+instalações
+	chocolatey
+	vscode
+	insomnia
+
+
+
+Back-end:
+	Regras de negócio
+	conexão com o banco de dados
+	envio de e-mails
+	conexão com serviços externos
+	autenticação(login)
+	autorização dos usuários
+	segurança e criptgrafia
+	
+MVC (Mode	l, Viwe, Controller):
+		Template Engine:
+			Forma de retornar HTML do back-end	
+
+		E
+
+REST - 
+	Retorna apenas os dados do back-end
+	
+
+Front-end: 
+	ReactJS
+
+Mobile:
+	React Native
+
+
+TypeScript:
+
+
+npm:
+npm init -y
+npm install express
+npm install @types/express -D (Adcionando tipagem ao express)
+npm install ts-node -D
+npm install typescript -D
+-Ao criar uma aplicação typescript, é necessário ter um arquivo de configuração do typescript, definindo quais features do typescript que se quer utilizar
+	npx tsc --init
+npm install ts-node-dev -D ()
+npm run dev (change test script and de path(ts-node-dev src/server.ts)) 
+
+npm install knex
+npm install sqlite3
+
+npm install cors
+npm install @types/cors -D
+
+
+React 
+	REACT: Biblioteca para construção de interfaces
+	Utilizado para construção de single-page-aplication(SPA)
+SPA:
+	Não precisa carregar a pagina ao alternar entre paginas. 
+
+criar projeto react
+	npx install create-react-app nome_da_aplicação
+
+criar projeto react com typescript
+	npx install create-react-app nome_da_aplicação --template=typescript
+
+
+React Native 
+
+
+Expo
+
+
+Rotas e Recursos:
+	Pesquisar
+	localhost:port/recurso
+
+Métodos HTTP:
+	conceito
+	get, post, put, delete
+
+Tipos de Parametros:
+	request params
+	query params
+	request params
+
+
+Banco de Dados:
+	sql e nosql
+	knex
+	sqlite3
+
+	Identificando entidades
+		points (pontos de coleta):
+			image
+			name
+			email
+			whatsapp
+			latitude
+			longitude
+			city
+			uf
+			number
+		items(items para coleta)
+			image	
+			title
+		point_items (Relacionamento de n:n )
+			point_id
+			item_id
+	
+	knex Migrations: historico do banco de dados
+		os arquivos migration são executados em ordem
+	npx knex migrate:latest --knexfile nomeDoArquivo.ts migrate:latest  //se estiver na raiz
+
+funcionalidades da aplicação
+	cadastro do ponto de coleta
+	listar os items de coleta
+	listar os pontos de coleta (filtrar por estado/cidade/items)
+	listar um ponto de coleta específico
+
+construção do app
+
+adcionando CORS
+	define quais endereços externos teram acesso a aplicação
+	quais urls web teram acesso a nossa api
+
+tips and tricks
+	keyboard shortcuts ( control shift p)
+
+
+EXPLICAÇÃO DOS DIRETORIOS
+	src:
+		database: 
+			migrations:
+				00.ts
+				01.ts
+				02.ts
+			connection.ts
+		routes.ts
+		server.ts
+package-lock.json
+package-lock.json.39024
+package.jsontsconfig.json
+		
+	
+
+
+
+
+
+
+
