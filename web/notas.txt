@@ -1,0 +1,52 @@
+------CONCEITOS ----------
+
+#index.html
+
+#div#root
+
+#JSX
+
+#React Components (Components)
+
+#React Propriedades  (props)
+
+#React Estado ([state, setState])
+
+#React Imutabilidade
+
+#Construção do HTML da primeira Página
+
+#Construção da naavegação
+
+#Construção do HTML do Formulário
+
+#Integrando mapa no Formulário
+
+#Buscando Itens de Coleta da API
+
+#Buscando cidade e estado do IBGE
+
+#Opção para usuário selecionar uma localidade no mapa
+
+#Carregar a localização atual do usuário no mapa
+
+#Cadastro de ponto de Coleta na API
+
+#Mensagem de sucesso
+
+
+
+
+----- INSTALAÇÃO DE PACOTES -----
+
+
+npm install react-icons
+npm install --save @types/react-dom -D
+
+npm install react-router-dom
+npm install @types/react-router-dom -D
+
+npm install leaflet react-leaflet
+npm install @types/react-leaflet -D
+
+npm install axios
