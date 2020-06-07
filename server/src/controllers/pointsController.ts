@@ -10,13 +10,18 @@ class PointsController {
         
         if(!point)
             return response.status(400).json({message: 'erou!'})
-        
+
+        const serializedPoint = {
+                ...point,
+                image: `http://192.168.0.23:3333/uploads/${point.image}`,
+        }
+    
         const items = await knex('items')
             .join('point_items', 'items.id', '=', 'point_items.item_id')
             .where('point_items.point_id', id)
             .select('items.title');
 
-        return response.json({point, items});
+        return response.json({point: serializedPoint, items});
     }
 
     async index (request: Request, response: Response) {
@@ -26,6 +31,9 @@ class PointsController {
             .split(',')
             .map(item => Number(item.trim()));
 
+
+        
+
         const points = await knex('points')
             .join('point_items', 'points.id', '=', 'point_items.point_id')
             .whereIn('point_items.item_id', parsedItems)
@@ -33,10 +41,18 @@ class PointsController {
             .where('uf', String(uf))
             .distinct() 
             .select('points.*');
+        
+            const serializedPoints = points.map(point => {
+                return {
+                    ...point,
+                    image: `http://192.168.0.23:3333/uploads/${point.image}`,
+                };
+            })
 
-        return response.json(points);
+        return response.json(serializedPoints);
     }
 
+   
     async create (request: Request, response: Response) {
         //recurso de desestruturação
         const {name, email, whatsapp, latitude, longitude, city, uf, items} = request.body; //items é um vetor contendo o id dos items selecionados (de 1 a6)
@@ -46,7 +62,7 @@ class PointsController {
         //short sintaxe nome da variavel é igual a do objeto (name: name) === name,
         //id como increments() no banco de dados
         const points = {
-            image: 'deep-https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
+            image: request.file.filename,
             name,
             email,
             whatsapp,
@@ -61,8 +77,11 @@ class PointsController {
         //console.log(id);
     
         //inserir na tabela de relacionamento n:n ('point_items')
-        const pointItems = items.map((item_id: number) => { //items é um array contendo o id dos items que foram escolhidos
-            //console.log(item_id);
+        const pointItems = items
+        .split(',')
+        .map((item: string)=> Number(item.trim()))
+        .map((item_id: number) => { //items é um array contendo o id dos items que foram escolhidos
+            
             return {
                 item_id,
                 point_id,
